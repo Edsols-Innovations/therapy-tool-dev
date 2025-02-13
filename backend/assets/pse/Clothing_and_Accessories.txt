@@ -1,0 +1,13 @@
+Shirt
+Skirt
+Shorts
+Frock
+Sari
+Vests
+Pant
+Pyjama
+Shoe
+Socks
+Belt
+Kerchief
+Uniform

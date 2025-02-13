@@ -1,0 +1,22 @@
+{
+  "name": "emr",
+  "version": "1.0.0",
+  "description": "Software for Learning and Speech Disabilities",
+  "main": "./frontend/out/main/index.js",
+  "author": "Edsols Innovations",
+  "dependencies": {
+    "@electron-toolkit/preload": "^3.0.1",
+    "@electron-toolkit/utils": "^3.0.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "electron-updater": "^6.1.7",
+    "fontawesome": "^5.6.3",
+    "fortawesome": "^0.0.1-security",
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.6.1",
+    "package.json": "^0.0.0",
+    "react-icons": "^5.3.0",
+    "react-router-dom": "^6.26.0",
+    "tree-kill": "^1.2.2"
+  }
+}

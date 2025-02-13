@@ -1,0 +1,15 @@
+Cat
+Dog
+Cow
+Goat
+Pig
+Horse
+Donkey
+Ox
+Buffalo
+Sheep
+Monkey
+Tiger
+Lion
+Rat
+Lizard

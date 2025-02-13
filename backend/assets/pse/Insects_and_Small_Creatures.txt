@@ -1,0 +1,13 @@
+Cockroach
+Mosquito
+Ant
+Fly
+Bed-bug
+Moth
+Butterfly
+Dragonfly
+Spider
+Centipede
+Millipede
+Caterpillar
+Earthworm

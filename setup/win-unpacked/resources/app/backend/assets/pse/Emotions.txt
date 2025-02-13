@@ -1,0 +1,5 @@
+Happiness
+Sadness
+Fear
+Anger
+Surprise
