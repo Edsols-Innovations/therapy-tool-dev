@@ -61,16 +61,31 @@ const SearchBar: React.FC<SearchBarProps> = ({ patients, onClose }) => {
   }
 
   // Navigate to patient details on selection
-  const handlePatientClick = (id: number) => {
-    navigate('/patientdetails', { state: { id, mode: 'existing' } })
-    onClose() // Close search popup after navigating
-  }
+  const handlePatientClick = (patient: Patient) => {
+    const userState = JSON.parse(localStorage.getItem('userState') || '{}');
+    const role = userState?.role || 'Therapist'; // Fallback to "Therapist" if role is missing
+  
+    localStorage.setItem(
+      'patientState',
+      JSON.stringify({
+        mode: 'existing',
+        id: patient.id,
+        role: role,
+        name: patient.name,
+        age: patient.age
+      })
+    );
+  
+    navigate('/patientdetails', { state: { id: patient.id, mode: 'existing', role: role } });
+    onClose(); // Close search popup after navigating
+    
+  };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-40 backdrop-blur-md flex items-start justify-center pt-32 z-50">
       <div
         ref={searchRef}
-        className="bg-white rounded-3xl shadow-2xl w-[90%] max-w-3xl p-6 relative transition-all"
+        className="bg-white rounded-3xl shadow-lg w-[90%] max-w-3xl p-6 relative"
       >
         {/* Search Input */}
         <div className="relative w-full">
@@ -80,50 +95,51 @@ const SearchBar: React.FC<SearchBarProps> = ({ patients, onClose }) => {
             onChange={handleSearchChange}
             autoFocus
             placeholder="Search for patients..."
-            className="w-full h-14 pl-14 pr-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500 text-md text-gray-800 shadow-sm"
+            className="w-full h-12 pl-14 pr-4 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 text-sm text-gray-700 shadow-sm"
           />
           <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">
-            <CiSearch className="w-6 h-6" />
+            <CiSearch className="w-5 h-5" />
           </span>
         </div>
-  
+
         {/* Search Results */}
         {searchQuery && (
-          <div className="mt-5 max-h-80 overflow-y-auto">
+          <div className="mt-4 max-h-80 overflow-y-auto">
             {filteredPatients.length > 0 ? (
               filteredPatients.map((patient) => (
                 <div
                   key={patient.id}
-                  onClick={() => handlePatientClick(patient.id)}
-                  className="flex items-center justify-between p-4 bg-gray-50 hover:bg-blue-50 rounded-xl cursor-pointer transition-all shadow-sm"
+                  onClick={() => handlePatientClick(patient)}
+                  className="flex items-center justify-between p-3 hover:bg-gray-100 rounded-lg cursor-pointer transition"
                 >
                   <div className="flex items-center gap-4">
                     <img
                       src={getProfileImageUrl(patient.profile_image)}
                       alt={patient.name}
-                      className="w-12 h-12 rounded-full object-cover shadow-md"
+                      className="w-12 h-12 rounded-full object-cover"
                     />
                     <div>
-                      <div className="font-semibold text-gray-900 text-lg">{patient.name}</div>
+                      <div className="font-semibold">{patient.name}</div>
                       <div className="text-sm text-gray-500">
                         {patient.age} years, {patient.sex}
                       </div>
                     </div>
                   </div>
                   <div className="text-sm text-gray-600">
-                    <span className="block">Doctor: {patient.doctor_name || 'Assigned to all'}</span>
-                    <span className="block">Therapist: {patient.therapist_name || 'Assigned to all'}</span>
+                    Therapist: {patient.therapist_name || 'Assigned to all'}
+                    <br />
+                    Doctor: {patient.doctor_name || 'Assigned to all'}
                   </div>
                 </div>
               ))
             ) : (
-              <div className="text-center text-gray-500 mt-6">No patients found.</div>
+              <div className="text-center text-gray-500 mt-4">No patients found.</div>
             )}
           </div>
         )}
       </div>
     </div>
-  );  
+  )
 }
 
 export default SearchBar
