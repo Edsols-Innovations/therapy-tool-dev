@@ -321,9 +321,6 @@ const ManageTherapists: React.FC = () => {
               >
                 {/* Doctor Name */}
                 <div className="flex items-center space-x-4">
-                  <div className="w-10 h-10 bg-blue-100 text-blue-500 flex items-center justify-center rounded-full text-lg font-bold shadow-sm">
-                    {therapist.therapist_name.charAt(0)}
-                  </div>
                   <span className="text-gray-900 font-medium">{therapist.therapist_name}</span>
                 </div>
 

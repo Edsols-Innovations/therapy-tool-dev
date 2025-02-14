@@ -1,8 +1,0 @@
-version: 1.0.0
-files:
-  - url: emr-1.0.0-setup.exe
-    sha512: OjKIRX7UcScYb4Pgea34nPZIyyL5ZnupstbAdPJm4YChGgOjotdm0BO4ZdFG9ECOjRfxwPVSq5JueML4WB67RA==
-    size: 924747985
-path: emr-1.0.0-setup.exe
-sha512: OjKIRX7UcScYb4Pgea34nPZIyyL5ZnupstbAdPJm4YChGgOjotdm0BO4ZdFG9ECOjRfxwPVSq5JueML4WB67RA==
-releaseDate: '2025-01-29T11:43:23.403Z'
